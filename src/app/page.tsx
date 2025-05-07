@@ -18,6 +18,11 @@ export default function Home() {
             <p>Click Me</p>
           </Link>
         </button>
+        <button className="btn-primary">
+          <Link href={`preview`} className="w-full h-full p-0.5">
+            <p>Click Me</p>
+          </Link>
+        </button>
       </main>
     </div>
   );
