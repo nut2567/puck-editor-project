@@ -1,21 +1,32 @@
-// src/puck.config.ts
+import PuckButton from "@/components/PuckButton";
 
-const config = {
-  collections: {
-    pages: {
-      label: "Pages",
+export const puckConfig = {
+  components: {
+    PuckButton: {
+      component: PuckButton,
       fields: {
-        title: {
-          type: "text",
-          label: "Title",
+        text: { type: "text", label: "Label", defaultValue: "Click me" },
+        variant: {
+          type: "select",
+          label: "Bootstrap Variant",
+          options: [
+            "primary",
+            "secondary",
+            "success",
+            "danger",
+            "warning",
+            "info",
+            "light",
+            "dark",
+          ],
+          defaultValue: "primary",
         },
-        content: {
-          type: "textarea",
-          label: "Content",
+        className: {
+          type: "text",
+          label: "Custom CSS Class",
+          defaultValue: "",
         },
       },
     },
   },
 };
-
-export default config;

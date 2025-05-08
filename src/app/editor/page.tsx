@@ -2,10 +2,11 @@
 import { Puck } from "@measured/puck";
 import "@measured/puck/puck.css";
 
-// Create Puck component config
+// ✅ ตั้งค่า config ให้มี HeadingBlock และ ButtonBlock
 const config = {
   components: {
     HeadingBlock: {
+      label: "Heading",
       fields: {
         children: {
           type: "custom" as const,
@@ -14,7 +15,7 @@ const config = {
             onChange,
           }: {
             value: string;
-            onChange: (newValue: string) => void;
+            onChange: (v: string) => void;
           }) => (
             <input
               type="text"
@@ -24,24 +25,27 @@ const config = {
           ),
         },
       },
-      render: ({ children }: { children: string }) => {
-        return <h1>{children}</h1>;
-      },
+      render: ({ children }: { children: string }) => <h1>{children}</h1>,
     },
   },
 };
 
-// Describe the initial data
-const initialData = {};
+// ✅ ต้องมี __key เพื่อไม่ให้เตือนเรื่อง key
+const initialData = {
+  content: [
+    {
+      id: "heading-1",
+      __key: "heading-1",
+      type: "HeadingBlock",
+      props: { children: "Welcome to the Editor" },
+    },
+  ],
+};
 
-// Save the data to your database
-interface SaveFunction {
-  (data: Record<string, unknown>): void;
-}
+const save = (data: Record<string, unknown>) => {
+  console.log("Published data:", data);
+};
 
-const save: SaveFunction = (data) => {};
-
-// Render Puck editor
 export default function Editor() {
   return <Puck config={config} data={initialData} onPublish={save} />;
 }

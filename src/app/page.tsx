@@ -7,7 +7,7 @@ export default function Home() {
     <div className={styles.page}>
       <main className={styles.main}>
         <button className="btn-primary">
-          <Link href={`admin`} className="">
+          <Link href={`editor`} className="">
             <p>Click Me</p>
           </Link>
         </button>
