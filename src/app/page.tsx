@@ -1,21 +1,22 @@
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./page.module.css";
+import { Button } from "react-bootstrap";
 
 export default function Home() {
   return (
     <div className={styles.page}>
       <main className={styles.main}>
-        <button className="btn-primary">
-          <Link href={`editor`} className="">
-            <p>Click Me</p>
-          </Link>
-        </button>
-        <button className="btn-primary">
-          <Link href={`preview`} className="">
-            <p>Click Me</p>
-          </Link>
-        </button>
+        <Link href={`editor`}>
+          <Button>
+            <p>editor</p>
+          </Button>
+        </Link>
+        <Link href={`preview`}>
+          <Button>
+            <p>preview</p>
+          </Button>
+        </Link>
         <Image
           className={styles.logo}
           src="/next.svg"

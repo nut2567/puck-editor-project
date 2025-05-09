@@ -1,32 +1,25 @@
-import PuckButton from "@/components/PuckButton";
+import type { Config } from "@measured/puck";
 
-export const puckConfig = {
+type Props = {
+  HeadingBlock: { title: string };
+};
+
+export const config: Config<Props> = {
   components: {
-    PuckButton: {
-      component: PuckButton,
+    HeadingBlock: {
       fields: {
-        text: { type: "text", label: "Label", defaultValue: "Click me" },
-        variant: {
-          type: "select",
-          label: "Bootstrap Variant",
-          options: [
-            "primary",
-            "secondary",
-            "success",
-            "danger",
-            "warning",
-            "info",
-            "light",
-            "dark",
-          ],
-          defaultValue: "primary",
-        },
-        className: {
-          type: "text",
-          label: "Custom CSS Class",
-          defaultValue: "",
-        },
+        title: { type: "text" },
       },
+      defaultProps: {
+        title: "Heading",
+      },
+      render: ({ title }) => (
+        <div style={{ padding: 64 }}>
+          <h1>{title}</h1>
+        </div>
+      ),
     },
   },
 };
+
+export default config;

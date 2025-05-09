@@ -1,51 +1,44 @@
-"use client";
-import { Puck } from "@measured/puck";
+/**
+ * This file implements a *magic* catch-all route that renders the Puck editor.
+ *
+ * This route exposes /puck/[...puckPath], but is disabled by middleware.ts. The middleware
+ * then rewrites all URL requests ending in `/edit` to this route, allowing you to visit any
+ * page in your application and add /edit to the end to spin up a Puck editor.
+ *
+ * This approach enables public pages to be statically rendered whilst the /puck route can
+ * remain dynamic.
+ *
+ * NB this route is public, and you will need to add authentication
+ */
+
 import "@measured/puck/puck.css";
+import { Client } from "./client";
+import { Metadata } from "next";
+import { getPage } from "@/lib/get-page";
 
-// ✅ ตั้งค่า config ให้มี HeadingBlock และ ButtonBlock
-const config = {
-  components: {
-    HeadingBlock: {
-      label: "Heading",
-      fields: {
-        children: {
-          type: "custom" as const,
-          render: ({
-            value,
-            onChange,
-          }: {
-            value: string;
-            onChange: (v: string) => void;
-          }) => (
-            <input
-              type="text"
-              value={value || ""}
-              onChange={(e) => onChange(e.target.value)}
-            />
-          ),
-        },
-      },
-      render: ({ children }: { children: string }) => <h1>{children}</h1>,
-    },
-  },
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ puckPath: string[] }>;
+}): Promise<Metadata> {
+  const { puckPath = [] } = await params;
+  const path = `/${puckPath.join("/")}`;
 
-// ✅ ต้องมี __key เพื่อไม่ให้เตือนเรื่อง key
-const initialData = {
-  content: [
-    {
-      id: "heading-1",
-      __key: "heading-1",
-      type: "HeadingBlock",
-      props: { children: "Welcome to the Editor" },
-    },
-  ],
-};
-
-const save = (data: Record<string, unknown>) => {
-  console.log("Published data:", data);
-};
-
-export default function Editor() {
-  return <Puck config={config} data={initialData} onPublish={save} />;
+  return {
+    title: "Puck: " + path,
+  };
 }
+
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ puckPath: string[] }>;
+}) {
+  const { puckPath = [] } = await params;
+  const path = `/`;
+  const data = getPage(path);
+
+  return <Client path={path} data={data || {}} />;
+}
+
+export const dynamic = "force-dynamic";

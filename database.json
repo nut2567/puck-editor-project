@@ -1,0 +1,15 @@
+{
+  "/": {
+    "root": { "props": {} },
+    "content": [
+      {
+        "type": "HeadingBlock",
+        "props": {
+          "title": "Heading2",
+          "id": "HeadingBlock-e4f9f4bb-adef-4915-a86e-460d14cccd13"
+        }
+      }
+    ],
+    "zones": {}
+  }
+}
