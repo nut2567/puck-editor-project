@@ -26,7 +26,7 @@ export async function generateMetadata({
   const path = `/${puckPath.join("/")}`;
 
   return {
-    title: getPage(path)?.root.props?.title,
+    title: "puck preview",
   };
 }
 
@@ -36,16 +36,11 @@ export default async function Page({
   params: Promise<{ puckPath: string[] }>;
 }) {
   const { puckPath = [] } = await params;
-  const path = `/1`;
+  const path = `/`;
   const data = getPage(path) ?? ({ root: {}, content: [] } as Data);
 
   return (
     <>
-      <Link href={`editor`} className="">
-        <button className="btn-primary">
-          <p>Click Me</p>
-        </button>
-      </Link>
       <Client data={data} />
     </>
   );
