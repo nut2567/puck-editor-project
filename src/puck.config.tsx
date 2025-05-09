@@ -1,19 +1,31 @@
 import type { Config } from "@measured/puck";
 
-import { Button } from "react-bootstrap";
+import { _Button, PuckButtonProps } from "@/components/config/PuckButton";
+import { Flex, FlexProps } from "@/components/config/Flex";
 
 type Props = {
   HeadingBlock: { title: string; padding: number; description: string };
-  ButtonBlock: {
-    text: string;
-    href: string;
-    padding: number;
-    variant: string;
-    align: string;
-  };
+  Button: PuckButtonProps;
+  Flex: FlexProps;
 };
 
 export const config: Config<Props> = {
+  categories: {
+    layout: {
+      components: ["Flex"], // Added Flex to the layout category
+    },
+    typography: {
+      components: ["HeadingBlock"],
+    },
+    interactive: {
+      title: "Actions",
+      components: ["Button"],
+    },
+    other: {
+      title: "Other",
+      //   components: ["Card", "Hero", "Logos", "Stats", "Template"],
+    },
+  },
   components: {
     HeadingBlock: {
       label: "Heading",
@@ -33,51 +45,8 @@ export const config: Config<Props> = {
         </div>
       ),
     },
-    ButtonBlock: {
-      label: "Button",
-      fields: {
-        text: { type: "text" },
-        href: { type: "text" },
-        padding: { type: "number" },
-        align: {
-          type: "select",
-          options: [
-            { label: "Left", value: "left" },
-            { label: "Center", value: "center" },
-            { label: "Right", value: "right" },
-          ],
-        },
-
-        variant: {
-          type: "select",
-          options: [
-            { label: "Primary", value: "primary" },
-            { label: "Secondary", value: "secondary" },
-            { label: "Success", value: "success" },
-            { label: "Warning", value: "warning" },
-            { label: "Danger", value: "danger" },
-            { label: "Info", value: "info" },
-            { label: "Light", value: "light" },
-            { label: "Dark", value: "dark" },
-            { label: "Link", value: "link" },
-          ],
-        },
-      },
-      defaultProps: {
-        text: "Click Me",
-        href: "#",
-        padding: 0,
-        variant: "primary",
-        align: "left",
-      },
-      render: ({ text, href, padding, variant, align }) => (
-        <div style={{ textAlign: align as React.CSSProperties["textAlign"] }}>
-          <Button variant={variant} href={href} style={{ padding }}>
-            {text}
-          </Button>
-        </div>
-      ),
-    },
+    Button: _Button,
+    Flex: Flex,
   },
 };
 
