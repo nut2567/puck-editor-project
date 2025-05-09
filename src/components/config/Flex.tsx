@@ -1,5 +1,5 @@
 import React from "react";
-import { ComponentConfig } from "@measured/puck";
+import { ComponentConfig, DropZone } from "@measured/puck";
 import { Section } from "@/components/Section";
 import { WithLayout, withLayout } from "@/components/Layout";
 
@@ -24,9 +24,9 @@ const FlexInternal: ComponentConfig<FlexProps> = {
       label: "Justify Content",
       type: "radio",
       options: [
-        { label: "Start", value: "start" },
+        { label: "Start", value: "flex-start" },
         { label: "Center", value: "center" },
-        { label: "End", value: "end" },
+        { label: "End", value: "flex-end" },
       ],
     },
     gap: {
@@ -55,15 +55,19 @@ const FlexInternal: ComponentConfig<FlexProps> = {
   render: ({ justifyContent, direction, gap, wrap }) => {
     return (
       <Section style={{ height: "100%" }}>
-        <div
-          style={{
-            display: "flex",
-            justifyContent,
-            flexDirection: direction,
-            gap,
-            flexWrap: wrap,
-          }}
-        ></div>
+        <div>
+          <DropZone
+            zone="content"
+            style={{
+              display: "flex",
+              justifyContent,
+              flexDirection: direction,
+              alignItems: direction,
+              gap,
+              flexWrap: wrap,
+            }}
+          />
+        </div>
       </Section>
     );
   },
