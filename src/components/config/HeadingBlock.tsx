@@ -3,7 +3,8 @@ import { ComponentConfig } from "@measured/puck";
 
 export type HeadingBlockProps = {
   title: string;
-  padding: number;
+  padding: string;
+  margin: string;
   description: string;
 };
 
@@ -12,15 +13,17 @@ export const HeadingBlock: ComponentConfig<HeadingBlockProps> = {
   fields: {
     title: { type: "text" },
     description: { type: "text" },
-    padding: { type: "number" },
+    padding: { type: "text" },
+    margin: { type: "text" },
   },
   defaultProps: {
     title: "Heading",
     description: "This is a description",
-    padding: 64,
+    padding: "64px",
+    margin: "0px",
   },
-  render: ({ title, padding }) => (
-    <div style={{ padding }}>
+  render: ({ title, padding, margin }) => (
+    <div style={{ padding, margin }}>
       <h1>{title}</h1>
     </div>
   ),

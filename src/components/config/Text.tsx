@@ -2,8 +2,17 @@ import React from "react";
 import { ALargeSmall, AlignLeft } from "lucide-react";
 
 import { ComponentConfig } from "@measured/puck";
-import { Section } from "../../components/Section";
-import { WithLayout, withLayout } from "../../components/Layout";
+import { Section } from "@/components/Section";
+import { WithLayout, withLayout } from "@/components/Layout";
+
+// Extend the types for SelectField and RadioField to include the `icon` property
+
+type ExtendedIconField = {
+  type: "radio" | "select";
+  options: { label: string; value: string }[];
+  labelIcon?: any;
+  tooltip?: string;
+};
 
 export type TextProps = WithLayout<{
   align: "left" | "center" | "right";
@@ -20,10 +29,11 @@ const TextInner: ComponentConfig<TextProps> = {
     size: {
       type: "select",
       options: [
-        { label: "S", value: "s" },
-        { label: "M", value: "m" },
+        { label: "S  ", value: "s" },
+        { label: "M  ", value: "m" },
       ],
-    },
+      labelIcon: ALargeSmall,
+    } as ExtendedIconField,
     align: {
       type: "radio",
       options: [
@@ -31,7 +41,8 @@ const TextInner: ComponentConfig<TextProps> = {
         { label: "Center", value: "center" },
         { label: "Right", value: "right" },
       ],
-    },
+      labelIcon: AlignLeft,
+    } as ExtendedIconField,
     color: {
       type: "radio",
       options: [

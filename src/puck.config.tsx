@@ -1,5 +1,4 @@
 import type { Config } from "@measured/puck";
-
 import { _Button, PuckButtonProps } from "@/components/config/PuckButton";
 import {
   HeadingBlock,
@@ -11,6 +10,7 @@ import {
   ContainerInternal,
   ContainerProps,
 } from "@/components/config/Container";
+import { Space, SpaceProps } from "@/components/config/Space";
 
 type Props = {
   HeadingBlock: HeadingBlockProps;
@@ -18,12 +18,13 @@ type Props = {
   Flex: FlexProps;
   Text: TextProps;
   Container: ContainerProps;
+  Space: SpaceProps;
 };
 
 export const config: Config<Props> = {
   categories: {
     layout: {
-      components: ["Flex", "Container"],
+      components: ["Flex", "Container", "Space"],
     },
     typography: {
       components: ["HeadingBlock", "Text"],
@@ -43,6 +44,7 @@ export const config: Config<Props> = {
     Flex: Flex,
     Container: ContainerInternal,
     Text: Text,
+    Space: Space,
   },
 };
 

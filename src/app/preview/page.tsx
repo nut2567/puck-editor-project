@@ -3,16 +3,16 @@ import { Metadata } from "next";
 import { getPage } from "@/lib/get-page";
 import type { Data } from "@measured/puck";
 
+const path = `/`;
+const data = getPage(path) ?? ({ root: {}, content: [] } as Data);
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ puckPath: string[] }>;
 }): Promise<Metadata> {
-  const { puckPath = [] } = await params;
-  const path = `/${puckPath.join("/")}`;
-
   return {
     title: "puck preview",
+    description: "Preview page for puck project",
   };
 }
 
@@ -21,10 +21,6 @@ export default async function Page({
 }: {
   params: Promise<{ puckPath: string[] }>;
 }) {
-  const { puckPath = [] } = await params;
-  const path = `/`;
-  const data = getPage(path) ?? ({ root: {}, content: [] } as Data);
-
   return (
     <>
       <Client data={data} />

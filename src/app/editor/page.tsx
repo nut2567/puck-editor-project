@@ -22,9 +22,6 @@ export default async function Page({
 }: {
   params: Promise<{ puckPath: string[] }>;
 }) {
-  const path = `/`;
-  const data = getPage(path);
-
   return <Client path={path} data={data || {}} />;
 }
 

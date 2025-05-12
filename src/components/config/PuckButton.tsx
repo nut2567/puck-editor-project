@@ -5,7 +5,8 @@ import { Button } from "react-bootstrap";
 export type PuckButtonProps = {
   text: string;
   href: string;
-  padding: number;
+  padding: string;
+  margin: string;
   variant: string;
   align: string;
 };
@@ -15,7 +16,8 @@ export const _Button: ComponentConfig<PuckButtonProps> = {
   fields: {
     text: { type: "text" },
     href: { type: "text" },
-    padding: { type: "number" },
+    margin: { type: "text" },
+    padding: { type: "text" },
     align: {
       type: "select",
       options: [
@@ -43,17 +45,18 @@ export const _Button: ComponentConfig<PuckButtonProps> = {
   defaultProps: {
     text: "Click Me",
     href: "#",
-    padding: 0,
+    padding: "0px",
     variant: "primary",
     align: "left",
+    margin: "0px",
   },
   // inline: true,
-  render: ({ text, href, padding, variant, align, puck }) => (
+  render: ({ text, href, padding, variant, align, puck, margin }) => (
     <div style={{ textAlign: align as React.CSSProperties["textAlign"] }}>
       <Button
         variant={variant}
         href={href}
-        style={{ padding }}
+        style={{ padding, margin }}
         ref={puck.dragRef}
       >
         {text}
