@@ -11,6 +11,7 @@ import {
   ContainerProps,
 } from "@/components/config/Container";
 import { Space, SpaceProps } from "@/components/config/Space";
+import { Grid, GridProps } from "@/components/config/Grid";
 
 type Props = {
   HeadingBlock: HeadingBlockProps;
@@ -19,12 +20,13 @@ type Props = {
   Text: TextProps;
   Container: ContainerProps;
   Space: SpaceProps;
+  Grid: GridProps;
 };
 
 export const config: Config<Props> = {
   categories: {
     layout: {
-      components: ["Flex", "Container", "Space"],
+      components: ["Flex", "Container", "Space", "Grid"],
     },
     typography: {
       components: ["HeadingBlock", "Text"],
@@ -45,6 +47,7 @@ export const config: Config<Props> = {
     Container: ContainerInternal,
     Text: Text,
     Space: Space,
+    Grid: Grid,
   },
 };
 

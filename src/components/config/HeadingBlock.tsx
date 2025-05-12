@@ -11,10 +11,10 @@ export type HeadingBlockProps = {
 export const HeadingBlock: ComponentConfig<HeadingBlockProps> = {
   label: "Heading",
   fields: {
-    title: { type: "text" },
-    description: { type: "text" },
     padding: { type: "text" },
     margin: { type: "text" },
+    title: { type: "text" },
+    description: { type: "text" },
   },
   defaultProps: {
     title: "Heading",

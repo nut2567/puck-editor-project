@@ -6,11 +6,15 @@ export type ContainerProps = {
   justifyContent: "start" | "center" | "end";
   direction: "row" | "column";
   gap: number;
+  padding: string;
+  margin: string;
   wrap: "wrap" | "nowrap";
 };
 
 export const ContainerInternal: ComponentConfig<ContainerProps> = {
   fields: {
+    padding: { type: "text" },
+    margin: { type: "text" },
     direction: {
       label: "Direction",
       type: "radio",
@@ -46,6 +50,8 @@ export const ContainerInternal: ComponentConfig<ContainerProps> = {
     justifyContent: "start",
     direction: "row",
     gap: 24,
+    padding: "0px",
+    margin: "0px",
     wrap: "wrap",
   },
   render: ({ justifyContent, direction, gap, wrap }) => {

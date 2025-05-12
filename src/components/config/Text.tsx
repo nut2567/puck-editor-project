@@ -15,9 +15,10 @@ type ExtendedIconField = {
 };
 
 export type TextProps = WithLayout<{
+  padding: string;
+  margin: string;
   align: "left" | "center" | "right";
   text?: string;
-  padding?: string;
   size?: "s" | "m";
   color: "default" | "muted";
   maxWidth?: string;
@@ -25,6 +26,8 @@ export type TextProps = WithLayout<{
 
 const TextInner: ComponentConfig<TextProps> = {
   fields: {
+    padding: { type: "text" },
+    margin: { type: "text" },
     text: { type: "textarea" },
     size: {
       type: "select",
@@ -57,6 +60,8 @@ const TextInner: ComponentConfig<TextProps> = {
     text: "Text",
     size: "m",
     color: "default",
+    padding: "0px",
+    margin: "0px",
   },
   render: ({ align, color, text, size, maxWidth }) => {
     return (

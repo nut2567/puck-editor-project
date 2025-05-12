@@ -15,21 +15,12 @@ export const Space: ComponentConfig<SpaceProps> = {
       type: "select",
       options: spacingOptions,
     },
-    direction: {
-      type: "radio",
-      options: [
-        { value: "vertical", label: "Vertical" },
-        { value: "horizontal", label: "Horizontal" },
-        { value: "", label: "Both" },
-      ],
-    },
   },
   defaultProps: {
-    direction: "",
     size: "24px",
   },
   inline: true,
-  render: ({ direction, size, puck }) => {
+  render: ({ size, puck }) => {
     return <div ref={puck.dragRef} style={{ height: size }} />;
   },
 };
