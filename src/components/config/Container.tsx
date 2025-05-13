@@ -54,9 +54,13 @@ export const ContainerInternal: ComponentConfig<ContainerProps> = {
     margin: "0px",
     wrap: "wrap",
   },
-  render: ({ justifyContent, direction, gap, wrap }) => {
+  render: ({ justifyContent, direction, gap, wrap, padding, margin }) => {
+    const style = {
+      ...(padding !== "0px" && { padding }),
+      ...(margin !== "0px" && { margin }),
+    };
     return (
-      <Container style={{ height: "100%" }}>
+      <Container style={{ ...style, height: "100%" }}>
         <div>
           <DropZone
             zone="content"
