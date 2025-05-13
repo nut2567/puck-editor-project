@@ -1,5 +1,5 @@
 import React from "react";
-import { ComponentConfig } from "@measured/puck";
+import { ComponentConfig, DropZone } from "@measured/puck";
 import { Section } from "@/components/Section";
 import { withLayout } from "@/components/Layout";
 import { Col, Row } from "react-bootstrap";
@@ -29,11 +29,18 @@ export const GridInternal: ComponentConfig<GridProps> = {
   },
   render: ({ gap, numColumns }) => {
     return (
-      <Row style={{ gap, gridTemplateColumns: `repeat(${numColumns}, 1fr)` }}>
-        {Array.from({ length: numColumns }).map((_, index) => (
-          <Col key={index}>Item {index + 1}</Col>
-        ))}
-      </Row>
+      <Section style={{ height: "100%" }}>
+        <div>
+          <DropZone
+            zone="content"
+            style={{
+              display: "grid",
+              gap,
+              gridTemplateColumns: `repeat(${numColumns}, 1fr)`,
+            }}
+          />
+        </div>
+      </Section>
     );
   },
 };

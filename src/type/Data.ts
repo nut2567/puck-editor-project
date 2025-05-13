@@ -58,4 +58,25 @@ export type Data<
   zones?: Record<string, Content<Props>>;
 };
 
+export type ComponentDataOptionalId<
+  Props extends DefaultComponentProps = DefaultComponentProps,
+  Name = string
+> = {
+  type: Name;
+  props: Props & {
+    id?: string;
+  };
+} & BaseData<Props>;
+
+export type Slot<
+  Props extends { [key: string]: DefaultComponentProps } = {
+    [key: string]: DefaultComponentProps;
+  }
+> = {
+  [K in keyof Props]: ComponentDataOptionalId<
+    Props[K],
+    K extends string ? K : never
+  >;
+}[keyof Props][];
+
 export type Metadata = { [key: string]: any };

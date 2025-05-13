@@ -5,8 +5,6 @@ import { ComponentConfig } from "@measured/puck";
 import { Section } from "@/components/Section";
 import { WithLayout, withLayout } from "@/components/Layout";
 
-// Extend the types for SelectField and RadioField to include the `icon` property
-
 type ExtendedIconField = {
   type: "radio" | "select";
   options: { label: string; value: string }[];
@@ -26,9 +24,9 @@ export type TextProps = WithLayout<{
 
 const TextInner: ComponentConfig<TextProps> = {
   fields: {
+    text: { type: "textarea" },
     padding: { type: "text" },
     margin: { type: "text" },
-    text: { type: "textarea" },
     size: {
       type: "select",
       options: [
@@ -62,6 +60,7 @@ const TextInner: ComponentConfig<TextProps> = {
     color: "default",
     padding: "0px",
     margin: "0px",
+    maxWidth: "1280px",
   },
   render: ({ align, color, text, size, maxWidth }) => {
     return (

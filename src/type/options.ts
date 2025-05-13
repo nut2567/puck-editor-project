@@ -20,3 +20,22 @@ export const spacingOptions = [
   { label: "152px", value: "152px" },
   { label: "160px", value: "160px" },
 ];
+
+export const sizeOptions = [
+  { value: "xxxl", label: "XXXL" },
+  { value: "xxl", label: "XXL" },
+  { value: "xl", label: "XL" },
+  { value: "l", label: "L" },
+  { value: "m", label: "M" },
+  { value: "s", label: "S" },
+  { value: "xs", label: "XS" },
+];
+
+export const levelOptions = [
+  { label: "h1", value: "1" },
+  { label: "h2", value: "2" },
+  { label: "h3", value: "3" },
+  { label: "h4", value: "4" },
+  { label: "h5", value: "5" },
+  { label: "h6", value: "6" },
+];
