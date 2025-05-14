@@ -16,6 +16,10 @@ import { _Row as Row, RowProps } from "@/components/config/Row";
 import { _Col as Col, ColProps } from "@/components/config/Col";
 import { AccordionProps, _Accordion } from "@/components/config/Accordion";
 import { Alert, AlertProps } from "@/components/config/Alert";
+import {
+  Image as _ImageComponent,
+  ImageProps,
+} from "@/components/config/Image";
 
 type Props = {
   HeadingBlock: HeadingBlockProps;
@@ -29,6 +33,7 @@ type Props = {
   Space: SpaceProps;
   Grid: GridProps;
   Alert: AlertProps;
+  Image: ImageProps; // Added Image
 };
 
 export const config: Config<Props> = {
@@ -51,6 +56,11 @@ export const config: Config<Props> = {
       title: "Actions",
       components: ["Button", "Alert"],
     },
+    media: {
+      // Added media category
+      title: "Media",
+      components: ["Image"],
+    },
     other: {
       title: "Other",
       components: ["Accordion"], // Added Accordion to the other category
@@ -68,6 +78,7 @@ export const config: Config<Props> = {
     Row: Row,
     Accordion: _Accordion,
     Alert: Alert,
+    Image: _ImageComponent, // Added Image
   },
 };
 
