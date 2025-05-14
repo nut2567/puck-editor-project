@@ -12,6 +12,7 @@ import {
 } from "@/components/config/Container";
 import { Space, SpaceProps } from "@/components/config/Space";
 import { Grid, GridProps } from "@/components/config/Grid";
+import { _Row as Row, RowProps } from "@/components/config/Row";
 
 type Props = {
   HeadingBlock: HeadingBlockProps;
@@ -19,6 +20,7 @@ type Props = {
   Flex: FlexProps;
   Text: TextProps;
   Container: ContainerProps;
+  Row: RowProps;
   Space: SpaceProps;
   Grid: GridProps;
 };
@@ -26,7 +28,7 @@ type Props = {
 export const config: Config<Props> = {
   categories: {
     layout: {
-      components: ["Flex", "Container", "Space", "Grid"],
+      components: ["Flex", "Container", "Space", "Grid", "Row"],
     },
     typography: {
       components: ["HeadingBlock", "Text"],
@@ -48,6 +50,7 @@ export const config: Config<Props> = {
     Text: Text,
     Space: Space,
     Grid: Grid,
+    Row: Row,
   },
 };
 

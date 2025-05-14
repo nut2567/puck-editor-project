@@ -49,11 +49,19 @@ const Heading: ComponentConfig<HeadingBlockProps> = {
       padding: "0px",
     },
   },
-  render: ({ title, padding, margin, maxWidth, level, size }) => {
+  render: ({ title, padding, margin, maxWidth, level, size, align }) => {
     const Tag: any = level ? `h${level}` : "span";
     return (
       <Section maxWidth={maxWidth}>
-        <div style={{ display: "block", padding, margin, fontSize: size }}>
+        <div
+          style={{
+            display: "block",
+            padding,
+            margin,
+            fontSize: size,
+            textAlign: align,
+          }}
+        >
           <Tag>{title}</Tag>
         </div>
       </Section>
