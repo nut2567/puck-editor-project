@@ -61,19 +61,17 @@ export const ContainerInternal: ComponentConfig<ContainerProps> = {
     };
     return (
       <Container style={{ ...style, height: "100%" }}>
-        <div>
-          <DropZone
-            zone="content"
-            style={{
-              display: "flex",
-              justifyContent,
-              flexDirection: direction,
-              alignItems: direction,
-              gap,
-              flexWrap: wrap,
-            }}
-          />
-        </div>
+        <DropZone
+          zone="content"
+          style={{
+            display: "flex",
+            justifyContent,
+            flexDirection: direction,
+            alignItems: direction,
+            gap,
+            flexWrap: wrap,
+          }}
+        />
       </Container>
     );
   },
